@@ -1,21 +1,22 @@
 /**
  *  Project: redux-intro
- *  File: store.js
+ *  File: storeV1.js
  *  Created: 9:21 CH, 15/08/2024
  *  Author: Mai Tran Tuan Kiet
  *  "Family is where life begins and love never ends."
  */
 
-import { combineReducers, createStore } from 'redux';
-import customerReducer                  from './features/customers/customerSlice.js';
-import accountReducer                   from './features/accounts/accountSlice.js';
+import { configureStore } from '@reduxjs/toolkit';
+
+import accountReducer     from './features/accounts/accountSlice.js';
+import customerReducer    from './features/customers/customerSlice.js';
 
 
-const rootReducer = combineReducers({
-																			account : accountReducer,
-																			customer: customerReducer
-																		});
-
-const store = createStore(rootReducer);
+const store = configureStore({
+	reducer: {
+		account: accountReducer,
+		customer: customerReducer
+	}
+														 })
 
 export default store;
